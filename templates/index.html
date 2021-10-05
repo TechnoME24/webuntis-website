@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Timetable{% endblock %}
+{% block pageTitle %}1BK1T1{% endblock %}
+
+
+{% block content %}
+
+<script type="text/javascript">
+    buildTable('{{jsonTimeTable|tojson}}')
+</script>
+
+<h2>{{jsonTimeTable}}</h2>
+
+{% endblock %}
