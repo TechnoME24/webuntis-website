@@ -9,6 +9,7 @@ class Untis:
         self.school = school
         self.useragent = useragent
         self.className = className
+        self.weekDays = ["Mo", "Di", "Mi", "Do", "Fr","test"]
         self.lesson_starttimes = [
             datetime.time(hour=7, minute=50),
             datetime.time(hour=8, minute=40),
@@ -45,9 +46,11 @@ class Untis:
             lessons_sorted.append(tt.filter(start=time))
 
         timetable = []
+        count = 0
 
         for lessons in lessons_sorted:
             l = len(lessons)
+            
 
             if l == 0:
                 timetable.append(["empty"])
@@ -83,9 +86,11 @@ class Untis:
         timetableWeek = []
         today = datetime.date.today()
         monday = today - datetime.timedelta(days=today.weekday())
-        wd = ["Mo", "Di", "Mi", "Do", "Fr"]
 
         for i in range(5):
             day = monday + datetime.timedelta(days=i)
-            timetableWeek.append(self.getTimetable(day))
+            timetable = self.getTimetable(day)
+            timetable.insert(0, self.weekDays[i])
+        
+            timetableWeek.append(timetable)
         return timetableWeek
