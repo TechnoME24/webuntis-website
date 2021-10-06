@@ -50,7 +50,7 @@ class Untis:
             l = len(lessons)
 
             if l == 0:
-                timetable.append([])
+                timetable.append(["empty"])
             else:
 
                 to_append = []
@@ -83,6 +83,7 @@ class Untis:
         timetableWeek = []
         today = datetime.date.today()
         monday = today - datetime.timedelta(days=today.weekday())
+        wd = ["Mo", "Di", "Mi", "Do", "Fr"]
 
         for i in range(5):
             day = monday + datetime.timedelta(days=i)

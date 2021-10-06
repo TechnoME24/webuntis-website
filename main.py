@@ -20,7 +20,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return render_template('index.html', jsonTimeTable = jsonString)
+    return render_template('index.html', jsonTimeTable = jsonString, title="1BK1T1")
 
 
 @app.route('/assets/<path:path>')
