@@ -1,8 +1,8 @@
-function buildTable(data) {
-    let week = JSON.parse(data)
+function buildTable(weekData, tag) {
+    let week = JSON.parse(weekData)
     
     //important variables
-    let div = document.getElementsByClassName("createTable")[0]
+    let div = document.getElementsByClassName(tag)[0]
     let table = document.createElement("table")
     let thead = document.createElement("thead")
     let tbody = document.createElement("tbody")
@@ -14,12 +14,10 @@ function buildTable(data) {
 
     //create Headline
     firstCell.appendChild(document.createTextNode("#"))
-    firstCell.setAttribute("scope","col")
     firstRow.appendChild(firstCell)
     for (let i = 0; i < week.length; i++) {
         let colText = document.createTextNode(week[i][0])
         let col = document.createElement("th")
-        col.setAttribute("scope","col")
         col.appendChild(colText)
         firstRow.appendChild(col)
     }
@@ -27,12 +25,36 @@ function buildTable(data) {
     table.appendChild(thead)
 
     //create Table
-    for (let j = 1; j < week[0].length; j++) {
-        for (let i = 0; i < week.length; i++) {
-            
+    for (let i = 1; i < week[0].length; i++) {
+        let row = document.createElement("tr")
+        let header = document.createElement("th")
+        header.appendChild(document.createTextNode(i))
+        row.appendChild(header)
+        for (let j = 0; j < week.length; j++) {
+            let data = document.createElement("td")
+            let content = week[j][i]
+
+            if (content.length == 1) {
+                content = formatContent(content, data)
+            } else {
+                for (let k = 0; k < content.length; k++) {
+                    console.log(content[k])
+                    content = content + formatContent(content[k], data)
+                }
+            }
+            data.appendChild(document.createTextNode(content))
+            row.appendChild(data)
         }
+        tbody.appendChild(row)
     }
     table.appendChild(tbody)
 
     div.appendChild(table)
+}
+
+function formatContent(content, data) {
+    if (content == "empty") {
+        content = "-"
+    }
+    return content
 }
