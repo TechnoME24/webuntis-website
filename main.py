@@ -29,4 +29,4 @@ def send_assets(path):
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=1111)
+    app.run(debug=False, port=2111)
