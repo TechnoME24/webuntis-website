@@ -46,7 +46,8 @@ class Untis:
             lessons_sorted.append(tt.filter(start=time))
 
         timetable = []
-        count = 0
+
+        timetable.append(self.weekDays[day.weekday()])
 
         for lessons in lessons_sorted:
             l = len(lessons)
@@ -90,7 +91,5 @@ class Untis:
         for i in range(5):
             day = monday + datetime.timedelta(days=i)
             timetable = self.getTimetable(day)
-            timetable.insert(0, self.weekDays[i])
-        
             timetableWeek.append(timetable)
         return timetableWeek
