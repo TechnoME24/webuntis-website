@@ -9,5 +9,5 @@ untis = Untis(
     className='1BK1T1'
 )
 
-#untis.getTimetableThisWeek()
-print(datetime.datetime.today().weekday())
+print(untis.getTimetableThisWeek())
+#print(datetime.datetime.today().weekday())
