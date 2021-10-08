@@ -10,7 +10,7 @@ function buildTable(weekData, tag) {
     let firstCell = document.createElement("th")
     
     //set atributes
-    table.setAttribute("class", "table table-striped table-bordered")
+    table.setAttribute("class", "table table-striped table-bordered text-center")
     table.setAttribute("style", "text-align: center; width: 80%; margin-left: 10px")
     thead.setAttribute("class","thead-dark")
 
@@ -38,12 +38,13 @@ function buildTable(weekData, tag) {
 
             if (content.length == 1) {
                 data.appendChild(document.createTextNode(formatContent(content[0], data)))
+                row.appendChild(data)
             } else {
                 for (let k = 0; k < content.length; k++) {
                     data.appendChild(document.createTextNode(formatContent(content[k], data)))
                 }
+                row.appendChild(data)
             }
-            row.appendChild(data)
         }
         tbody.appendChild(row)
     }
